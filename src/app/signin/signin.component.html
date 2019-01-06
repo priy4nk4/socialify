@@ -1,0 +1,40 @@
+  <div *ngIf="!user" class="card text-center card-signin">
+    <h6 class="card-header">
+      Social Login Demo
+    </h6>
+    <div class="card-block">
+      <h4 class="card-title">Not signed in</h4>
+      <p class="card-text">Sign in with</p>
+    </div>
+    <div class="card-block">
+      <button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()">
+        <span class="fa fa-facebook"></span></button>
+    </div>
+  </div>
+
+<div class="container row profile card-signin" *ngIf ="user">
+    <div class="col-lg-3 col-sm-3">
+        <div class="card hovercard">
+            <div class="useravatar">
+                <img alt="" src="{{user.photoUrl}}">
+            </div>
+            <div class="userprofile">
+                <h4 class="card-title">{{ user.name }}</h4>
+                <p class="card-text">{{ user.email }}</p>
+              </div>
+        </div>        
+        <div class="well row">
+            <div class="col-sm-6">
+                <button type="button" id="favorites" class="btn btn-default" (click)="signInWithFB()">Refresh</button>
+            </div>
+            <div >
+                <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+            </div>           
+        </div>            
+     </div>
+     <div class="col-lg-2 col-sm-2"></div>
+     <div class="col-lg-7 col-sm-7">
+        <app-profile *ngIf="user"
+                      [authKey]= user.authToken></app-profile>
+     </div>
+</div>
